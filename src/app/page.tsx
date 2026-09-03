@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <main className="bg-black text-white">
       <section
-        className="relative isolate min-h-[100svh] overflow-hidden bg-black"
+        className="relative isolate min-h-[calc(100svh-4rem)] overflow-hidden bg-black"
         aria-roledescription="carrusel"
         aria-label="Soluciones destacadas de MAXIDRONE"
       >
@@ -88,7 +88,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-black/70 via-black/15 to-transparent" />
         <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
 
-        <div className="relative z-30 mx-auto flex min-h-[100svh] max-w-[1440px] items-end px-6 pb-24 pt-32 sm:px-10 sm:pb-28 lg:px-14 lg:pb-24">
+        <div className="relative z-30 mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] items-end px-6 pb-24 pt-20 sm:px-10 sm:pb-28 lg:px-14 lg:pb-24">
           <div className="max-w-2xl" key={currentSlide.title}>
             <p className="hero-copy-enter text-sm font-bold uppercase tracking-[0.26em] text-[#018C55] sm:text-base">
               {currentSlide.category}
