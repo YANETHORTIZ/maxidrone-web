@@ -90,7 +90,7 @@ export default function Home() {
 
         <div className="relative z-30 mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] items-end px-6 pb-24 pt-20 sm:px-10 sm:pb-28 lg:px-14 lg:pb-24">
           <div className="max-w-2xl" key={currentSlide.title}>
-            <p className="hero-copy-enter text-sm font-bold uppercase tracking-[0.26em] text-[#018C55] sm:text-base">
+            <p className="hero-copy-enter text-sm font-bold uppercase tracking-[0.26em] text-white sm:text-base">
               {currentSlide.category}
             </p>
             <h1 className="hero-copy-enter mt-3 text-4xl font-black uppercase leading-none tracking-[-0.04em] sm:text-6xl lg:text-7xl">
