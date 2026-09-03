@@ -7,11 +7,11 @@ import { useState } from "react";
 
 const navigationLinks = [
   { href: "/", label: "Inicio" },
+  { href: "/nosotros", label: "Nosotros" },
   { href: "/enterprise", label: "DJI Enterprise" },
   { href: "/agriculture", label: "DJI Agriculture" },
   { href: "/academy", label: "DJI Academy" },
   { href: "/servicios", label: "Servicios" },
-  { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
 ];
 
