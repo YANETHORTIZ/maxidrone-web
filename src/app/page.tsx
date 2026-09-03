@@ -65,8 +65,10 @@ export default function Home() {
             return (
               <div
                 key={slide.src}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  isActive ? "z-10 opacity-100" : "z-0 opacity-0"
+                className={`absolute inset-0 transition-[opacity,transform] duration-[1200ms] ease-in-out ${
+                  isActive
+                    ? "z-10 scale-100 opacity-100"
+                    : "pointer-events-none z-0 scale-[1.08] opacity-0"
                 }`}
                 aria-hidden={!isActive}
               >
@@ -80,6 +82,7 @@ export default function Home() {
                     isActive ? "hero-image-active" : "scale-[1.03]"
                   }`}
                 />
+                {isActive && <span className="hero-light-sweep absolute inset-0" />}
               </div>
             );
           })}
