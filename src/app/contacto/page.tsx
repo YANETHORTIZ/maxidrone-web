@@ -109,6 +109,11 @@ const slides = [
   },
 ];
 
+const PROJECT_REQUESTS_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwDANAxxEHRzAcDG8UJPd8nM6hs0I0Swdd-Dt30U5jS3CKruMObQgp1Wlw67lptUwFU/exec";
+
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
 /* ============================================================
    PÁGINA
 ============================================================ */
@@ -116,6 +121,8 @@ const slides = [
 export default function ContactoPage() {
   const [active, setActive] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const currentSlide = slides[active];
 
@@ -126,6 +133,8 @@ export default function ContactoPage() {
   const changeSlide = (index: number) => {
     setActive(index);
     setSelectedOption("");
+    setSubmitStatus("idle");
+    setSubmitMessage("");
   };
 
   const previousSlide = () => {
@@ -134,56 +143,71 @@ export default function ContactoPage() {
     );
 
     setSelectedOption("");
+    setSubmitStatus("idle");
+    setSubmitMessage("");
   };
 
   const nextSlide = () => {
     setActive((current) => (current + 1) % slides.length);
     setSelectedOption("");
+    setSubmitStatus("idle");
+    setSubmitMessage("");
   };
 
   /* ============================================================
      ENVÍO DEL FORMULARIO
   ============================================================ */
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    if (!selectedOption) {
+      setSubmitStatus("error");
+      setSubmitMessage("Selecciona la solución que buscas.");
+      return;
+    }
 
-    const nombre = formData.get("nombre");
-    const empresa = formData.get("empresa");
-    const email = formData.get("email");
-    const telefono = formData.get("telefono");
-    const mensaje = formData.get("mensaje");
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-    const subject = `Solicitud MAXIDRONE - ${currentSlide.title}`;
+    const nombre = String(formData.get("nombre") || "");
+    const empresa = String(formData.get("empresa") || "");
+    const email = String(formData.get("email") || "");
+    const telefono = String(formData.get("telefono") || "");
+    const mensaje = String(formData.get("mensaje") || "");
+    const website = String(formData.get("website") || "");
 
-    const body = `
-TIPO DE SOLICITUD:
-${currentSlide.title}
+    setSubmitStatus("sending");
+    setSubmitMessage("");
 
-SERVICIO / SOLUCIÓN:
-${selectedOption || "No especificado"}
+    try {
+      await fetch(PROJECT_REQUESTS_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({
+          nombre,
+          empresa,
+          email,
+          correo: email,
+          telefono,
+          solucion: `${currentSlide.title} — ${selectedOption}`,
+          proyecto: mensaje,
+          mensaje,
+          website,
+        }),
+      });
 
-NOMBRE:
-${nombre}
-
-EMPRESA:
-${empresa}
-
-EMAIL:
-${email}
-
-TELÉFONO:
-${telefono}
-
-MENSAJE:
-${mensaje}
-`;
-
-    window.location.href = `mailto:${
-      currentSlide.email
-    }?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      form.reset();
+      setSelectedOption("");
+      setSubmitStatus("success");
+      setSubmitMessage("Solicitud recibida. Nos pondremos en contacto contigo.");
+    } catch {
+      setSubmitStatus("error");
+      setSubmitMessage("No pudimos guardar tu solicitud. Intenta nuevamente.");
+    }
   };
 
   return (
@@ -577,10 +601,13 @@ ${mensaje}
                 </label>
 
                 <select
+                  required
                   value={selectedOption}
-                  onChange={(event) =>
-                    setSelectedOption(event.target.value)
-                  }
+                  onChange={(event) => {
+                    setSelectedOption(event.target.value);
+                    setSubmitStatus("idle");
+                    setSubmitMessage("");
+                  }}
                   className="h-10 w-full border border-[#333333] bg-[#111111] px-4 text-[12px] text-white outline-none transition focus:border-[#888888]"
                 >
                   <option value="">
@@ -608,6 +635,15 @@ ${mensaje}
                 onSubmit={handleSubmit}
                 className="mt-2"
               >
+
+                <input
+                  aria-hidden="true"
+                  autoComplete="off"
+                  name="website"
+                  tabIndex={-1}
+                  type="text"
+                  className="pointer-events-none absolute -left-[9999px] h-px w-px opacity-0"
+                />
 
                 <div className="grid gap-2 sm:grid-cols-2">
 
@@ -654,11 +690,14 @@ ${mensaje}
 
                 <button
                   type="submit"
-                  className="group mt-2 flex h-10 w-full items-center justify-between bg-white px-5 text-[11px] font-black uppercase tracking-[0.12em] text-black transition duration-300 hover:bg-[#D9D9D9]"
+                  disabled={submitStatus === "sending"}
+                  className="group mt-2 flex h-10 w-full items-center justify-between bg-white px-5 text-[11px] font-black uppercase tracking-[0.12em] text-black transition duration-300 hover:bg-[#D9D9D9] disabled:cursor-wait disabled:opacity-60"
                 >
 
                   <span>
-                    Enviar solicitud
+                    {submitStatus === "sending"
+                      ? "Guardando solicitud..."
+                      : "Enviar solicitud"}
                   </span>
 
                   <ArrowRight
@@ -667,6 +706,20 @@ ${mensaje}
                   />
 
                 </button>
+
+                {submitMessage && (
+                  <p
+                    role="status"
+                    aria-live="polite"
+                    className={`mt-2 text-center text-[10px] font-semibold ${
+                      submitStatus === "success"
+                        ? "text-[#018C55]"
+                        : "text-red-300"
+                    }`}
+                  >
+                    {submitMessage}
+                  </p>
+                )}
 
               </form>
 
