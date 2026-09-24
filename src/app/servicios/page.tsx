@@ -318,6 +318,14 @@ export default function ServiciosPage() {
     services.find((service) => service.id === selectedId) ??
     services[0];
 
+  const selectedServiceWhatsapp = `https://wa.me/524811566180?text=${encodeURIComponent(
+    `Hola MAXIDRONE, quiero solicitar información sobre el servicio de ${selected.title}.`,
+  )}`;
+
+  const projectWhatsapp = `https://wa.me/524811566180?text=${encodeURIComponent(
+    "Hola MAXIDRONE, quiero contarles sobre mi proyecto y recibir asesoría para una solución con drones.",
+  )}`;
+
   useEffect(() => {
     if (!selected.gallery || selected.gallery.length < 2) {
       return;
@@ -753,12 +761,14 @@ export default function ServiciosPage() {
                     )}
                   </div>
 
-                  <button
-                    onClick={() => scrollTo("contacto")}
-                    className="mt-6 rounded-full bg-white px-5 py-3 text-xs font-semibold text-black transition hover:bg-white/85"
+                  <a
+                    href={selectedServiceWhatsapp}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-6 inline-flex items-center rounded-full bg-white px-5 py-3 text-xs font-semibold text-black transition hover:bg-white/85"
                   >
                     Solicitar este servicio
-                  </button>
+                  </a>
 
                 </div>
 
@@ -965,12 +975,14 @@ export default function ServiciosPage() {
 
               </div>
 
-              <button
-                onClick={() => scrollTo("contacto")}
-                className="mt-7 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-white/85"
+              <a
+                href={projectWhatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-7 inline-flex items-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-white/85"
               >
                 Cuéntanos tu proyecto
-              </button>
+              </a>
 
             </div>
           </div>
