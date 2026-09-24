@@ -33,10 +33,10 @@ const slides = [
 
     image: "/images/servicio.gif",
 
-    phone: "481 102 4104",
-    phoneLink: "+524811024104",
+    phone: "481 156 6180",
+    phoneLink: "+524811566180",
 
-    email: "facturacion@maxidrone.mx",
+    email: "gabriela.ortiz@maxidrone.mx",
 
     options: [
       "Aplicación de agroquímicos",
@@ -211,7 +211,7 @@ export default function ContactoPage() {
   };
 
   return (
-    <main className="relative h-[calc(100dvh-60px)] overflow-hidden bg-black text-white">
+    <main className="contact-page relative h-[calc(100dvh-60px)] overflow-hidden bg-black text-white">
 
       {/* ============================================================
           HERO
@@ -253,7 +253,7 @@ export default function ContactoPage() {
               SOMBRA SUAVE
           ======================================================== */}
 
-          <div className="absolute inset-0 bg-black/[0.07]" />
+          <div className="contact-backdrop absolute inset-0" />
 
           <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
 
@@ -271,7 +271,9 @@ export default function ContactoPage() {
               LADO IZQUIERDO
           ======================================================== */}
 
-          <div className="max-w-[610px]">
+          <div className="contents lg:order-1 lg:block lg:max-w-[610px]">
+
+            <div className="order-1 w-full max-w-[610px]">
 
             {/* CONTADOR */}
 
@@ -293,7 +295,7 @@ export default function ContactoPage() {
                 TÍTULO
             ======================================================== */}
 
-            <h1 className="text-[46px] font-black uppercase leading-[0.88] tracking-[-0.055em] sm:text-[56px] xl:text-[66px]">
+            <h1 className="subpage-title text-[46px] font-black uppercase leading-[0.88] tracking-[-0.055em] sm:text-[56px] xl:text-[66px]">
 
               Cotiza tu
 
@@ -314,6 +316,10 @@ export default function ContactoPage() {
               seleccionar la solución adecuada, cotizar equipos o desarrollar
               un proyecto especializado.
             </p>
+
+            </div>
+
+            <div className="order-3 w-full max-w-[610px]">
 
             {/* ========================================================
                 CATEGORÍA ACTUAL
@@ -441,13 +447,15 @@ export default function ContactoPage() {
 
             </div>
 
+            </div>
+
           </div>
 
           {/* ========================================================
               LADO DERECHO
           ======================================================== */}
 
-          <div className="w-full max-w-[700px] justify-self-end">
+          <div className="order-2 w-full max-w-[700px] justify-self-end lg:order-2">
 
             {/* ========================================================
                 FORMULARIO
@@ -601,6 +609,9 @@ export default function ContactoPage() {
                 </label>
 
                 <select
+                  form="contact-form"
+                  id="contact-solution"
+                  name="solucion"
                   required
                   value={selectedOption}
                   onChange={(event) => {
@@ -632,6 +643,7 @@ export default function ContactoPage() {
               ==================================================== */}
 
               <form
+                id="contact-form"
                 onSubmit={handleSubmit}
                 className="mt-2"
               >

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 type Audience = "alumno" | "universidad";
@@ -83,80 +84,10 @@ export default function AcademyPage() {
   return (
     <main className="overflow-hidden bg-black text-white">
 
-      {/* ====================================================== */}
-      {/* NAV */}
-      {/* ====================================================== */}
-
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between px-6 sm:px-10 lg:px-14">
-
-          <button
-            onClick={() =>
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })
-            }
-            className="flex items-center gap-4"
-          >
-            <img
-              src="/images/logo-agriculture.png"
-              alt="DJI Agriculture"
-              className="h-7 w-auto object-contain sm:h-8"
-            />
-
-            <span className="h-6 w-px bg-white/15" />
-
-            <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/65">
-              Academy
-            </span>
-          </button>
-
-          <nav className="hidden items-center gap-7 lg:flex">
-
-            <button
-              onClick={() => scrollTo("programa")}
-              className="text-xs font-medium text-white/45 transition hover:text-white"
-            >
-              Programa
-            </button>
-
-            <button
-              onClick={() =>
-                scrollTo("universidades")
-              }
-              className="text-xs font-medium text-white/45 transition hover:text-white"
-            >
-              Universidades
-            </button>
-
-            <button
-              onClick={() =>
-                scrollTo("certificacion")
-              }
-              className="text-xs font-medium text-white/45 transition hover:text-white"
-            >
-              Certificación
-            </button>
-
-            <button
-              onClick={() => scrollTo("registro")}
-              className="rounded-full bg-[#018C55] px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-[#018C55]"
-            >
-              Registro octubre 2026
-            </button>
-
-          </nav>
-
-          <button
-            onClick={() => scrollTo("registro")}
-            className="rounded-full bg-[#018C55] px-4 py-2 text-[11px] font-semibold lg:hidden"
-          >
-            Registro
-          </button>
-
-        </div>
-      </header>
+      <div
+        aria-hidden="true"
+        className="sticky top-0 z-50 h-[68px] border-b border-white/10 bg-black"
+      />
 
       {/* ====================================================== */}
       {/* HERO */}
@@ -186,7 +117,7 @@ export default function AcademyPage() {
               Formación DJI Agriculture
             </p>
 
-            <h1 className="mt-5 text-[56px] font-semibold leading-[0.9] tracking-[-0.06em] sm:text-[72px] lg:text-[82px]">
+            <h1 className="subpage-title mt-5 text-[56px] font-semibold leading-[0.9] tracking-[-0.06em] sm:text-[72px] lg:text-[82px]">
 
               DJI
 
@@ -930,9 +861,11 @@ export default function AcademyPage() {
 
         <div className="relative mx-auto max-w-[1000px] px-6 py-20 text-center sm:px-10">
 
-          <img
+          <Image
             src="/images/logo-agriculture.png"
             alt="DJI Agriculture"
+            width={240}
+            height={79}
             className="mx-auto h-8 w-auto object-contain"
           />
 

@@ -173,6 +173,7 @@ export default function EnterprisePage() {
 
       <section
         className="
+          unified-hero
           relative
           isolate
           h-[calc(100svh-64px)]
@@ -242,6 +243,7 @@ export default function EnterprisePage() {
         {/* CONTENIDO */}
         <div
           className="
+            unified-hero-shell
             relative
             z-10
             mx-auto
@@ -261,6 +263,7 @@ export default function EnterprisePage() {
 
           <div
             className="
+              unified-hero-copy
               max-w-[560px]
               translate-x-0
               sm:-translate-x-10
@@ -292,6 +295,7 @@ export default function EnterprisePage() {
             {/* TITULO */}
             <h1
               className="
+                subpage-title
                 max-w-[600px]
                 text-[38px]
                 font-semibold
@@ -365,7 +369,7 @@ export default function EnterprisePage() {
 
 
               <Link
-                href="https://wa.me/4811566180?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20las%20soluciones%20DJI%20Enterprise."
+                href="https://wa.me/524811566180?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20las%20soluciones%20DJI%20Enterprise."
                 className="
                   inline-flex
                   min-h-12
@@ -470,7 +474,7 @@ export default function EnterprisePage() {
 
       {/* ======================================================
           QUÉ QUIERES LOGRAR
-          FONDO: 4.gif
+          FONDO: enterprise-hero.gif
       ====================================================== */}
 
       <section
@@ -966,7 +970,7 @@ export default function EnterprisePage() {
 
 
             <Link
-              href="https://wa.me/4811566180?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20el%20equipo%20DJI%20Matrice%20400."
+              href="https://wa.me/524811566180?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20el%20equipo%20DJI%20Matrice%20400."
               className="
                 mt-10
                 inline-flex

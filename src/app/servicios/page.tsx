@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ServiceId =
   | "topografia"
   | "fumigacion"
   | "inspeccion"
-  | "desarrollo";
+  | "desarrollo"
+  | "garantias-agriculture"
+  | "garantias-consumo"
+  | "reparacion"
+  | "refacciones";
 
 type Service = {
   id: ServiceId;
@@ -19,6 +23,11 @@ type Service = {
   label: string;
   applications: string[];
   benefits: string[];
+  gallery?: {
+    src: string;
+    alt: string;
+    position?: string;
+  }[];
 };
 
 const services: Service[] = [
@@ -30,7 +39,28 @@ const services: Service[] = [
     subtitle: "Datos precisos para decisiones de ingeniería.",
     description:
       "Realizamos levantamientos aéreos para generación de información geoespacial, documentación de terreno, modelos digitales y seguimiento de proyectos. Cada operación se diseña de acuerdo con el área, precisión requerida y objetivo del cliente.",
-    image: "/images/servicios/topografia.gif",
+    image: "/images/topografia.png",
+    gallery: [
+      {
+        src: "/images/topografia.png",
+        alt: "Matrice 400",
+        position: "center 70%"
+      },
+      {
+        src: "/images/topografia2.png",
+        alt: "prosesamiento en dji terra",
+      },
+      {
+        src: "/images/topografia3.jpg",
+        alt: "Control en un levantamiento topografico ",
+        position: "center 20%",
+      },
+      {
+        src: "/images/topografia4.jpg",
+        alt: "mazda y antena con matrice 400",
+        position: "center 80%",
+      },
+    ],
     label: "Geoespacial",
     applications: [
       "Ortomosaicos",
@@ -56,7 +86,29 @@ const services: Service[] = [
     subtitle: "Aplicaciones aéreas más eficientes y precisas.",
     description:
       "Desarrollamos operaciones de aplicación agrícola con drones DJI AGRAS, adaptando parámetros de vuelo y aplicación de acuerdo con el cultivo, superficie y características particulares de cada proyecto.",
-    image: "/images/servicios/fumigacion.gif",
+    image: "/images/fumigacion.jpg",
+    gallery: [
+      {
+        src: "/images/fumigacion.jpg",
+        alt: "fumigacion con drone agras",
+        position: "center 5%"
+      },
+      {
+        src: "/images/fumigacion3.jpg",
+        alt: "rancho con drone agras",
+        position: "center 85%"
+      },
+      {
+        src: "/images/fumigacion1.jpg",
+        alt: "foto con influencers y drone agras",
+        position: "center 35%",
+      },
+      {
+        src: "/images/fumigacion2.jpg",
+        alt: "camioneta con drone agras",
+        position: "center 80%",
+      },
+    ],
     label: "Agricultura",
     applications: [
       "Aspersión",
@@ -125,15 +177,160 @@ const services: Service[] = [
       "Soluciones escalables",
     ],
   },
+
+  {
+    id: "garantias-agriculture",
+    number: "05",
+    shortName: "Garantías Agriculture",
+    title: "Trámite de garantías DJI Agriculture",
+    subtitle: "Acompañamiento técnico durante tu proceso de garantía.",
+    description:
+      "Te apoyamos con la revisión inicial, documentación y seguimiento del trámite de garantía para equipos DJI Agriculture, manteniéndote informado durante cada etapa del proceso.",
+    image: "/images/garantias.png",
+    label: "Soporte DJI Agriculture",
+    applications: [
+      "Revisión inicial",
+      "Integración de evidencias",
+      "Documentación del equipo",
+      "Seguimiento del trámite",
+      "Orientación al cliente",
+      "Recepción y entrega",
+    ],
+    benefits: [
+      "Acompañamiento durante el proceso",
+      "Documentación organizada",
+      "Seguimiento centralizado",
+      "Atención especializada",
+    ],
+  },
+
+  {
+    id: "garantias-consumo",
+    number: "06",
+    shortName: "Garantías Consumo",
+    title: "Garantías para drones de consumo",
+    subtitle: "Soporte para gestionar la garantía de tu equipo DJI.",
+    description:
+      "Recibimos y revisamos drones DJI de consumo para orientarte y ayudarte a preparar el trámite de garantía correspondiente, desde la evaluación inicial hasta el seguimiento del caso.",
+    image: "/images/garantiaconsumo.jpg",
+    label: "Soporte DJI",
+    applications: [
+      "Drones de consumo",
+      "Evaluación visual",
+      "Validación de información",
+      "Evidencia fotográfica",
+      "Seguimiento del caso",
+      "Entrega de equipo",
+    ],
+    benefits: [
+      "Proceso acompañado",
+      "Comunicación clara",
+      "Revisión previa del equipo",
+      "Seguimiento personalizado",
+    ],
+  },
+
+  {
+    id: "reparacion",
+    number: "07",
+    shortName: "Reparación",
+    title: "Reparación de drones",
+    subtitle: "Diagnóstico y servicio técnico certificado para recuperar tu operación.",
+    description:
+      "Realizamos diagnóstico, mantenimiento y reparación de drones, revisando cada equipo para identificar fallas y definir el servicio técnico o reemplazo de componentes más adecuado.",
+    image: "/images/reparacion.JPG",
+    gallery: [
+      {
+        src: "/images/reparacion.JPG",
+        alt: "Servicio de reparación de drones",
+      },
+      {
+        src: "/images/mantenimiento.png",
+        alt: "Mantenimiento técnico de drones",
+      },
+      {
+        src: "/images/control.png",
+        alt: "Asesoramiento durante la reparación por tecnicos certificados",
+        position: "center 50%",
+      },
+      {
+        src: "/images/pruebacampo.png",
+        alt: "Atención especializada para drones agrícolas ",
+        position: "center 50%",
+      },
+    ],
+    label: "Servicio técnico",
+    applications: [
+      "Diagnóstico",
+      "Mantenimiento preventivo",
+      "Reparación correctiva",
+      "Cambio de componentes",
+      "Pruebas funcionales",
+      "Limpieza técnica",
+    ],
+    benefits: [
+      "Diagnóstico documentado",
+      "Atención especializada",
+      "Pruebas antes de la entrega",
+      "Continuidad operativa",
+    ],
+  },
+
+  {
+    id: "refacciones",
+    number: "08",
+    shortName: "Refacciones",
+    title: "Venta de refacciones",
+    subtitle: "Componentes para mantenimiento y reparación de drones.",
+    description:
+      "Suministramos refacciones y componentes para distintos equipos, ayudándote a identificar la pieza compatible de acuerdo con el modelo y la necesidad de mantenimiento o reparación.",
+    image: "/images/refaccion4.jpg",
+    gallery: [
+      { src: "/images/refaccion4.jpg", alt: "Foto 1 de refacciones" },
+      { src: "/images/refaccion2.png", alt: "Foto 2 de refacciones" },
+      { src: "/images/refaccion3.png", alt: "Foto 3 de refacciones" },
+      { src: "/images/refaccion1.png", alt: "Foto 4 de refacciones" },
+    ],
+    label: "Partes y componentes",
+    applications: [
+      "Hélices",
+      "Trenes de aterrizaje",
+      "Brazos y motores",
+      "Cables y conectores",
+      "Componentes de aplicación",
+      "Piezas por modelo",
+    ],
+    benefits: [
+      "Asesoría de compatibilidad",
+      "Identificación por modelo",
+      "Opciones para mantenimiento",
+      "Atención antes de la compra",
+    ],
+  },
 ];
 
 export default function ServiciosPage() {
   const [selectedId, setSelectedId] =
     useState<ServiceId>("topografia");
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   const selected =
     services.find((service) => service.id === selectedId) ??
     services[0];
+
+  useEffect(() => {
+    if (!selected.gallery || selected.gallery.length < 2) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setGalleryIndex(
+        (current) => (current + 1) % selected.gallery!.length
+      );
+    }, 2500);
+
+    return () => window.clearInterval(timer);
+  }, [selected.gallery]);
 
   const scrollTo = (id: string) => {
     document
@@ -141,8 +338,13 @@ export default function ServiciosPage() {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const selectService = (id: ServiceId) => {
+  const activateService = (id: ServiceId) => {
     setSelectedId(id);
+    setGalleryIndex(0);
+  };
+
+  const selectService = (id: ServiceId) => {
+    activateService(id);
 
     setTimeout(() => {
       document
@@ -157,77 +359,10 @@ export default function ServiciosPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-black text-white">
 
-      {/* ====================================================== */}
-      {/* NAV */}
-      {/* ====================================================== */}
-
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between px-6 sm:px-10 lg:px-14">
-
-          <button
-            onClick={() =>
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })
-            }
-            className="flex items-center gap-3"
-          >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15">
-              <span className="text-xs font-bold">
-                M
-              </span>
-            </div>
-
-            <div className="text-left">
-              <p className="text-xs font-semibold tracking-[0.08em]">
-                MAXIDRONE
-              </p>
-
-              <p className="mt-[2px] text-[8px] uppercase tracking-[0.25em] text-white/30">
-                Servicios
-              </p>
-            </div>
-          </button>
-
-          <nav className="hidden items-center gap-7 lg:flex">
-            <button
-              onClick={() => scrollTo("servicios")}
-              className="text-xs font-medium text-white/45 transition hover:text-white"
-            >
-              Servicios
-            </button>
-
-            <button
-              onClick={() => scrollTo("metodologia")}
-              className="text-xs font-medium text-white/45 transition hover:text-white"
-            >
-              Cómo trabajamos
-            </button>
-
-            <button
-              onClick={() => scrollTo("soluciones")}
-              className="text-xs font-medium text-white/45 transition hover:text-white"
-            >
-              Desarrollo
-            </button>
-
-            <button
-              onClick={() => scrollTo("contacto")}
-              className="rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-black transition hover:bg-white/85"
-            >
-              Solicitar proyecto
-            </button>
-          </nav>
-
-          <button
-            onClick={() => scrollTo("contacto")}
-            className="rounded-full bg-white px-4 py-2 text-[11px] font-semibold text-black lg:hidden"
-          >
-            Contacto
-          </button>
-        </div>
-      </header>
+      <div
+        aria-hidden="true"
+        className="sticky top-0 z-50 h-[68px] border-b border-white/10 bg-black"
+      />
 
       {/* ====================================================== */}
       {/* HERO */}
@@ -247,7 +382,7 @@ export default function ServiciosPage() {
               </p>
             </div>
 
-            <h1 className="mt-6 max-w-[700px] text-[50px] font-semibold leading-[0.92] tracking-[-0.06em] sm:text-[66px] lg:text-[78px]">
+            <h1 className="subpage-title mt-6 max-w-[700px] text-[50px] font-semibold leading-[0.92] tracking-[-0.06em] sm:text-[66px] lg:text-[78px]">
               Tecnología aérea
               <span className="block text-white/25">
                 aplicada a tu operación.
@@ -365,7 +500,7 @@ export default function ServiciosPage() {
         id="servicios"
         className="scroll-mt-20 border-b border-white/10 bg-black"
       >
-        <div className="mx-auto max-w-[1440px] px-6 py-14 sm:px-10 lg:px-14 lg:py-16">
+        <div className="mx-auto max-w-[1440px] px-6 py-14 sm:px-10 lg:px-14 lg:pb-16 lg:pt-32">
 
           <div className="mb-9 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
@@ -400,7 +535,7 @@ export default function ServiciosPage() {
                   <button
                     key={service.id}
                     onClick={() =>
-                      setSelectedId(service.id)
+                      activateService(service.id)
                     }
                     className={`
                       group
@@ -468,13 +603,75 @@ export default function ServiciosPage() {
                   /images/servicios/desarrollo.jpg
                 */}
 
-                <div
-                  key={selected.image}
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url('${selected.image}')`,
-                  }}
-                />
+                {selected.gallery ? (
+                  <div className="absolute inset-0">
+                    {selected.gallery.map((photo, index) => (
+                      <div
+                        key={`${selected.id}-${index}`}
+                        aria-hidden={index !== galleryIndex}
+                        className={`absolute inset-0 transition-opacity duration-1000 ${
+                          index === galleryIndex
+                            ? "opacity-100"
+                            : "opacity-0"
+                        }`}
+                      >
+                        {photo.src ? (
+                          <div
+                            role="img"
+                            aria-label={photo.alt}
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{
+                              backgroundImage: `url('${photo.src}')`,
+                              backgroundPosition: photo.position,
+                            }}
+                          />
+                        ) : (
+                          <div className="absolute inset-0 grid place-items-center bg-[#111111]">
+                            <div className="text-center text-white/25">
+                              <span className="mx-auto block h-12 w-16 border border-dashed border-white/20" />
+                              <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.24em]">
+                                Foto {index + 1} de {selected.gallery?.length}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+
+                    <div className="absolute right-6 top-6 z-20 flex gap-2">
+                      {selected.gallery.map((photo, index) => (
+                        <button
+                          key={`${photo.alt}-control`}
+                          type="button"
+                          onClick={() => setGalleryIndex(index)}
+                          aria-label={`Mostrar ${photo.alt}`}
+                          className={`h-1.5 rounded-full transition-all ${
+                            index === galleryIndex
+                              ? "w-8 bg-white"
+                              : "w-3 bg-white/35 hover:bg-white/60"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ) : selected.image ? (
+                  <div
+                    key={selected.image}
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url('${selected.image}')`,
+                    }}
+                  />
+                ) : (
+                  <div className="absolute inset-0 grid place-items-center bg-[#111111]">
+                    <div className="text-center text-white/25">
+                      <span className="mx-auto block h-12 w-16 border border-dashed border-white/20" />
+                      <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.24em]">
+                        Espacio para fotografía
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent" />
 
@@ -588,12 +785,23 @@ export default function ServiciosPage() {
               className="group relative min-h-[230px] overflow-hidden border-r border-white/10 text-left"
             >
 
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-45 transition duration-700 group-hover:scale-105 group-hover:opacity-65"
-                style={{
-                  backgroundImage: `url('${service.image}')`,
-                }}
-              />
+              {service.image ? (
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-45 transition duration-700 group-hover:scale-105 group-hover:opacity-65"
+                  style={{
+                    backgroundImage: `url('${service.image}')`,
+                  }}
+                />
+              ) : (
+                <div className="absolute inset-0 grid place-items-center bg-[#101010] transition group-hover:bg-[#151515]">
+                  <div className="-translate-y-5 text-center text-white/20">
+                    <span className="mx-auto block h-9 w-12 border border-dashed border-white/20" />
+                    <p className="mt-3 text-[8px] uppercase tracking-[0.2em]">
+                      Agregar foto
+                    </p>
+                  </div>
+                </div>
+              )}
 
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/10" />
 
@@ -634,12 +842,12 @@ export default function ServiciosPage() {
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-white/30" />
 
-                <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-white/30">
-                  Cómo trabajamos
+                <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-white">
+                  ¿Cómo trabajamos con dji enterprise?
                 </p>
               </div>
 
-              <h2 className="mt-4 max-w-[500px] text-3xl font-semibold tracking-[-0.045em] sm:text-4xl lg:text-5xl">
+              <h2 className="mt-4 max-w-[500px] text-3xl font-semibold tracking-[-0.045em] sm:text-white/50 lg:text-5xl">
                 Primero entendemos
                 <span className="block text-white/25">
                   el problema.
@@ -865,7 +1073,7 @@ export default function ServiciosPage() {
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
 
             <a
-              href="https://wa.me/524811024104?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20sus%20servicios%20con%20drones."
+              href="https://wa.me/524811566180?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20sus%20servicios%20con%20drones."
               target="_blank"
               rel="noreferrer"
               className="whitespace-nowrap rounded-full bg-white px-7 py-3.5 text-center text-sm font-semibold text-black transition hover:bg-white/85"
@@ -874,7 +1082,7 @@ export default function ServiciosPage() {
             </a>
 
             <a
-              href="mailto:facturacion@maxidrone.mx"
+              href="mailto:gabriela.ortiz@maxidrone.mx"
               className="whitespace-nowrap rounded-full border border-white/15 px-7 py-3.5 text-center text-sm font-semibold text-white/70 transition hover:border-white/30 hover:text-white"
             >
               Enviar correo

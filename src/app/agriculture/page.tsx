@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, type ReactNode } from "react";
 
 type ModelId = "t100" | "t70p" | "t55" | "t25p";
@@ -354,71 +355,13 @@ export default function AgriculturePage() {
     <main className="min-h-screen overflow-hidden bg-[#050505] text-white">
 
       {/* ====================================================== */}
-      {/* SUB NAV AGRICULTURE */}
-      {/* ====================================================== */}
-
-      <div className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 sm:px-10 lg:px-14">
-
-          <button
-            onClick={scrollToModels}
-            className="flex items-center"
-          >
-            <img
-              src="/images/logo-agriculture.png"
-              alt="DJI Agriculture"
-              className="h-8 w-auto object-contain sm:h-9"
-            />
-          </button>
-
-          <div className="hidden items-center gap-8 md:flex">
-            <button
-              onClick={scrollToModels}
-              className="text-sm font-medium text-white/60 transition hover:text-white"
-            >
-              Modelos
-            </button>
-
-            <a
-              href="#comparativa"
-              className="text-sm font-medium text-white/60 transition hover:text-white"
-            >
-              Comparativa
-            </a>
-
-            <a
-              href="#tecnologia"
-              className="text-sm font-medium text-white/60 transition hover:text-white"
-            >
-              Tecnología
-            </a>
-
-            <a
-               href="https://wa.me/524811074483?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20los%20equipos%20DJI%20Agriculture."
-              className="
-                rounded-full
-                bg-[#018C55]
-                px-5
-                py-2.5
-                text-sm
-                font-semibold
-                text-white
-                transition
-                hover:bg-[#018C55]
-              "
-            >
-              Hablar con un asesor
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* ====================================================== */}
       {/* HERO */}
       {/* ====================================================== */}
 
       <section
         className="
+          unified-hero
+          agriculture-hero
           relative
           min-h-[760px]
           overflow-hidden
@@ -428,58 +371,43 @@ export default function AgriculturePage() {
         "
       >
 
-        {/* GLOW */}
-        <div
-          className="
-            pointer-events-none
-            absolute
-            right-[-200px]
-            top-[80px]
-            h-[700px]
-            w-[700px]
-            rounded-full
-            bg-[#018C55]/10
-            blur-[160px]
-          "
-        />
+        {/* IMAGEN DE FONDO */}
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/images/agrast100.png"
+            alt="Equipo MAXIDRONE trabajando con tecnología DJI Agriculture"
+            fill
+            priority
+            sizes="100vw"
+            className="h-full w-full object-cover object-[65%_center]"
+          />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
+
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
 
         <div
           className="
-            pointer-events-none
-            absolute
-            bottom-[-200px]
-            left-[-200px]
-            h-[500px]
-            w-[500px]
-            rounded-full
-            bg-white/5
-            blur-[140px]
-          "
-        />
-
-        <div
-          className="
+            unified-hero-shell
+            agriculture-hero-shell
             relative
             mx-auto
-            grid
+            flex
             min-h-[760px]
             max-w-[1440px]
-            items-center
-            gap-10
+            items-end
             px-6
             pb-16
-            pt-20
             sm:px-10
             lg:min-h-[820px]
-            lg:grid-cols-[0.85fr_1.15fr]
             lg:px-14
-            lg:pb-10
-            lg:pt-10
+            lg:pb-24
           "
         >
 
           {/* TEXTO */}
-          <div className="relative z-20 max-w-[650px]">
+          <div className="unified-hero-copy agriculture-hero-copy relative z-20 max-w-[650px]">
 
             <div className="mb-8 flex items-center gap-4">
               <span className="h-[2px] w-9 bg-[#018C55]" />
@@ -499,18 +427,23 @@ export default function AgriculturePage() {
 
             <h1
               className="
+                subpage-title
                 max-w-[700px]
                 text-[52px]
                 font-semibold
+                uppercase
                 leading-[0.95]
                 tracking-[-0.055em]
                 sm:text-[68px]
                 lg:text-[82px]
                 xl:text-[94px]
               "
+              style={{
+                textShadow: "0 4px 18px rgba(0,0,0,0.35)",
+              }}
             >
               El campo
-              <span className="block text-white/30">
+              <span className="block text-white">
                 evoluciona.
               </span>
             </h1>
@@ -578,141 +511,8 @@ export default function AgriculturePage() {
               </a>
             </div>
 
-            <div
-              className="
-                mt-14
-                grid
-                max-w-[550px]
-                grid-cols-3
-                border-t
-                border-white/10
-                pt-7
-              "
-            >
-              <HeroStat number="4" text="Modelos AGRAS" />
-
-              <HeroStat
-                number="100 L"
-                text="Máx. aspersión"
-                border
-              />
-
-              <HeroStat
-                number="RTK"
-                text="Precisión"
-                border
-              />
-            </div>
           </div>
 
-          {/* DRONE HERO */}
-          <div
-            className="
-              relative
-              z-10
-              flex
-              min-h-[390px]
-              items-center
-              justify-center
-              lg:min-h-[650px]
-            "
-          >
-            <div
-              className="
-                absolute
-                left-1/2
-                top-1/2
-                h-[430px]
-                w-[430px]
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                border
-                border-white/[0.04]
-                sm:h-[560px]
-                sm:w-[560px]
-              "
-            />
-
-            <div
-              className="
-                absolute
-                left-1/2
-                top-1/2
-                h-[320px]
-                w-[320px]
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                border
-                border-[#018C55]/10
-                sm:h-[430px]
-                sm:w-[430px]
-              "
-            />
-
-            <p
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-1/2
-                -translate-x-1/2
-                -translate-y-1/2
-                whitespace-nowrap
-                text-[120px]
-                font-black
-                tracking-[-0.08em]
-                text-white/[0.025]
-                sm:text-[180px]
-                lg:text-[230px]
-              "
-            >
-              AGRAS
-            </p>
-
-            <img
-              src="/images/t100.gif"
-              alt="DJI AGRAS T100"
-              className="
-                relative
-                z-10
-                w-full
-                max-w-[750px]
-                object-contain
-                drop-shadow-[0_35px_50px_rgba(0,0,0,0.8)]
-              "
-            />
-
-            <div
-              className="
-                absolute
-                bottom-8
-                right-0
-                hidden
-                rounded-2xl
-                border
-                border-white/10
-                bg-black/60
-                px-5
-                py-4
-                backdrop-blur-xl
-                xl:block
-              "
-            >
-              <p className="text-[10px] uppercase tracking-[0.24em] text-white/35">
-                Capacidad máxima
-              </p>
-
-              <p className="mt-1 text-xl font-semibold">
-                100 L
-              </p>
-
-              <p className="mt-1 text-xs text-white/40">
-                Sistema de aspersión
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -873,9 +673,12 @@ export default function AgriculturePage() {
                       </span>
                     )}
 
-                    <img
+                    <Image
                       src={model.image}
                       alt={model.name}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      unoptimized={model.image.endsWith(".gif")}
                       className="
                         absolute
                         inset-0
@@ -1104,10 +907,13 @@ export default function AgriculturePage() {
                 {selected.shortName}
               </span>
 
-              <img
+              <Image
                 key={selected.image}
                 src={selected.image}
                 alt={selected.name}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                unoptimized={selected.image.endsWith(".gif")}
                 className="
                   absolute
                   inset-0
@@ -1213,7 +1019,7 @@ export default function AgriculturePage() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="https://wa.me/4811024104?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20los%20equipos%20DJI%20Agriculture."
+                  href="https://wa.me/524811024104?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20los%20equipos%20DJI%20Agriculture."
                   className="
                     rounded-full
                     bg-[#018C55]
@@ -1702,9 +1508,11 @@ export default function AgriculturePage() {
             lg:py-40
           "
         >
-          <img
+          <Image
             src="/images/logo-agriculture.png"
             alt="DJI Agriculture"
+            width={240}
+            height={79}
             className="mx-auto h-10 w-auto object-contain"
           />
 
@@ -1743,7 +1551,7 @@ export default function AgriculturePage() {
 
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a
-               href="https://wa.me/4811024104?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20los%20equipos%20DJI%20Agriculture."
+               href="https://wa.me/524811024104?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20los%20equipos%20DJI%20Agriculture."
               className="
                 rounded-full
                 bg-[#018C55]
@@ -1788,32 +1596,6 @@ export default function AgriculturePage() {
 /* ========================================================== */
 /* COMPONENTES AUXILIARES */
 /* ========================================================== */
-
-function HeroStat({
-  number,
-  text,
-  border = false,
-}: {
-  number: string;
-  text: string;
-  border?: boolean;
-}) {
-  return (
-    <div
-      className={`
-        ${border ? "border-l border-white/10 pl-5" : ""}
-      `}
-    >
-      <p className="text-lg font-semibold sm:text-xl">
-        {number}
-      </p>
-
-      <p className="mt-1 text-[11px] text-white/35">
-        {text}
-      </p>
-    </div>
-  );
-}
 
 function SmallSpec({
   label,

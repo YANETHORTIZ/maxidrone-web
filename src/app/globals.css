@@ -5,6 +5,7 @@
   --foreground: #ffffff;
   --brand: #018c55;
   --surface: #151515;
+  --photo-overlay-opacity: 0.32;
 }
 
 @theme inline {
@@ -28,6 +29,140 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tratamiento fotográfico uniforme y más luminoso en todo el sitio. */
+main img {
+  filter: brightness(1.08) saturate(1.02);
+}
+
+main [class*="absolute"][style*="background-image"] {
+  filter: brightness(1.08) saturate(1.02);
+}
+
+main [class*="absolute"][style*="background-image"][class*="opacity-"] {
+  opacity: 0.82 !important;
+}
+
+:where(
+  main :has(img) > [class*="absolute"][class*="inset-0"][class*="bg-gradient-to-"],
+  main :has([style*="background-image"]) > [class*="absolute"][class*="inset-0"][class*="bg-gradient-to-"]
+) {
+  opacity: var(--photo-overlay-opacity) !important;
+}
+
+:where(
+  main :has(img) > [class*="absolute"][class*="inset-0"][class*="bg-black/"],
+  main :has([style*="background-image"]) > [class*="absolute"][class*="inset-0"][class*="bg-black/"]
+) {
+  opacity: 0.24 !important;
+}
+
+/* Contacto necesita mayor contraste porque sus fondos son naturalmente claros. */
+.contact-page .contact-backdrop {
+  background: rgb(0 0 0 / 0.48);
+  opacity: 1 !important;
+}
+
+/* Título principal compartido por todas las subpáginas. */
+.subpage-title {
+  margin-inline-start: 0.75rem;
+  font-size: 34px;
+}
+
+@media (min-width: 640px) {
+  .subpage-title {
+    margin-inline-start: 0;
+    font-size: 42px;
+  }
+}
+
+@media (min-width: 768px) {
+  .subpage-title {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subpage-title {
+    font-size: 56px;
+  }
+
+  .unified-hero-shell {
+    min-height: calc(100svh - 64px) !important;
+    max-width: 1440px !important;
+    align-items: end !important;
+    padding-right: 3.5rem !important;
+    padding-bottom: 6rem !important;
+    padding-left: 3.5rem !important;
+  }
+
+  .unified-hero-copy {
+    --tw-translate-x: 0px !important;
+    max-width: 700px !important;
+    translate: none !important;
+    transform: none !important;
+  }
+
+  .unified-hero:has(.unified-hero-shell.grid) {
+    height: calc(100svh - 138px) !important;
+    min-height: 0 !important;
+  }
+
+  .unified-hero-shell.grid {
+    height: 100% !important;
+    min-height: 0 !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+
+  .unified-hero .subpage-title {
+    margin-inline-start: 0;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+  }
+
+  .agriculture-hero {
+    height: calc(100svh - 64px) !important;
+    min-height: 650px !important;
+  }
+
+  .agriculture-hero .agriculture-hero-shell {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  .agriculture-hero .agriculture-hero-copy {
+    max-width: 600px !important;
+  }
+}
+
+/* En móvil, Contacto deja de estar encerrado en una sola pantalla. */
+@media (max-width: 639px) {
+  body > main:has(form) {
+    height: auto !important;
+    min-height: calc(100svh - 60px);
+    overflow: visible !important;
+  }
+
+  body > main:has(form) > section {
+    height: auto !important;
+    min-height: calc(100svh - 60px);
+    overflow: visible !important;
+  }
+
+  body > main:has(form) > section > .relative.z-10 {
+    height: auto !important;
+    align-items: stretch;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  body > main:has(form) :is(input, select, textarea) {
+    font-size: 16px;
+  }
 }
 
 @keyframes hero-zoom {

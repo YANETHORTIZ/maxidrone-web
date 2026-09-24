@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 /* ============================================================
    VERTICALES
@@ -92,6 +93,43 @@ const differentiators = [
   "Soluciones adaptadas a cada industria",
 ];
 
+const clients = [
+  {
+    name: "CEMEX",
+    logo: "/images/cemex.png",
+    logoClassName: "h-20 max-w-[310px]",
+  },
+  {
+    name: "Daikin",
+    logo: "/images/Daikin-Logo.png",
+    logoClassName: "h-24 max-w-[320px] scale-[1.9]",
+  },
+  {
+    name: "Praderas Huastecas",
+    logo: "/images/praderashuastecas.png",
+    logoClassName: "h-24 max-w-[260px] scale-110",
+  },
+];
+
+const clientPhotos = [
+  {
+    src: "/images/cliente1.jpg",
+    alt: "Cliente de MAXIDRONE con equipo DJI Agriculture",
+  },
+  {
+    src: "/images/cliente2.jpg",
+    alt: "Entrega de equipo DJI Agriculture a clientes de MAXIDRONE",
+  },
+  {
+    src: "/images/cliente3.jpg",
+    alt: "Clientes satisfechos durante la entrega de un dron agrícola",
+  },
+  {
+    src: "/images/cliente4.jpg",
+    alt: "Entrega de productos a un cliente de MAXIDRONE",
+  },
+];
+
 /* ============================================================
    PAGE
 ============================================================ */
@@ -106,6 +144,7 @@ export default function NosotrosPage() {
 
       <section
         className="
+          unified-hero
           relative
           isolate
           min-h-[calc(100svh-64px)]
@@ -157,6 +196,7 @@ export default function NosotrosPage() {
         {/* CONTENIDO */}
         <div
           className="
+            unified-hero-shell
             relative
             z-10
             mx-auto
@@ -173,7 +213,7 @@ export default function NosotrosPage() {
           "
         >
 
-          <div className="max-w-[850px]">
+          <div className="unified-hero-copy max-w-[850px]">
 
             <div className="mb-6 flex items-center gap-4">
 
@@ -196,6 +236,7 @@ export default function NosotrosPage() {
 
             <h1
               className="
+                subpage-title
                 max-w-[850px]
                 text-[34px]
                 font-semibold
@@ -402,6 +443,59 @@ export default function NosotrosPage() {
 
 
       {/* ======================================================
+          CLIENTES SATISFECHOS
+      ====================================================== */}
+
+      <section className="border-b border-[#181818] bg-[#050505]">
+        <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 lg:px-14 lg:py-24">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <div className="flex items-center gap-4">
+                <span className="h-[2px] w-8 bg-[#018C55]" />
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
+                  Experiencias reales
+                </p>
+              </div>
+
+              <h2 className="mt-5 text-3xl font-semibold uppercase tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+                Clientes
+                <span className="block text-white/40">satisfechos.</span>
+              </h2>
+            </div>
+
+            <p className="max-w-xl text-base leading-7 text-white/50">
+              Conoce algunos de los proyectos y experiencias que hemos
+              compartido con nuestros clientes.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {clientPhotos.map((photo, index) => (
+              <figure
+                key={photo.src}
+                className="group relative aspect-[4/3] overflow-hidden border border-white/10 bg-[#0b0b0b]"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                />
+
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+
+                <span className="absolute bottom-4 right-4 text-[10px] tracking-[0.2em] text-white/60">
+                  0{index + 1}
+                </span>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ======================================================
           VERTICALES
       ====================================================== */}
 <section
@@ -596,7 +690,7 @@ export default function NosotrosPage() {
     "
     style={{
       backgroundImage:
-        "url('/images/nosotros-mision.jpg')",
+        "url('/images/dronfondo.png')",
     }}
   />
 
@@ -1361,6 +1455,41 @@ export default function NosotrosPage() {
 
           </div>
 
+
+          {/* CLIENTES */}
+          <div className="mt-24 border-t border-white/10 pt-20">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#018C55]">
+                Experiencia que genera confianza
+              </p>
+
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl lg:text-5xl">
+                Empresas que han trabajado con MAXIDRONE.
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-base leading-7 text-white/55">
+                Organizaciones que han confiado en nuestra experiencia,
+                tecnología y acompañamiento especializado.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {clients.map((client) => (
+                <div
+                  key={client.name}
+                  className="flex min-h-32 items-center justify-center overflow-hidden border border-white/10 bg-white px-4 py-3"
+                >
+                  <Image
+                    src={client.logo}
+                    alt={`Logotipo de ${client.name}`}
+                    width={460}
+                    height={160}
+                    className={`w-full object-contain ${client.logoClassName}`}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* CTA */}
           <div
