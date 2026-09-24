@@ -7,9 +7,29 @@ import Navbar from "@/components/Navbar";
 const googleAnalyticsId = "G-2WP2C8VKDS";
 
 export const metadata: Metadata = {
-  title: "MAXIDRONE",
+  metadataBase: new URL("https://maxidrone.mx"),
+  title: {
+    default: "MAXIDRONE | Drones profesionales DJI",
+    template: "%s | MAXIDRONE",
+  },
   description:
-    "Soluciones profesionales con drones DJI Enterprise y DJI Agriculture",
+    "Soluciones profesionales con drones DJI Enterprise y DJI Agriculture en México.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    url: "/",
+    siteName: "MAXIDRONE",
+    title: "MAXIDRONE | Drones profesionales DJI",
+    description:
+      "Soluciones profesionales con drones DJI Enterprise y DJI Agriculture en México.",
+  },
 };
 
 export default function RootLayout({
