@@ -165,7 +165,7 @@ export default function NosotrosPage() {
           "
           style={{
             backgroundImage:
-              "url('/images/nosotros.gif')",
+              "url('/images/nosotros.webp')",
           }}
         />
 

@@ -50,7 +50,7 @@ const models: DroneModel[] = [
     tagline: "Potencia diseñada para grandes operaciones.",
     description:
       "La plataforma de mayor capacidad de la familia AGRAS. Diseñada para operaciones agrícolas de gran escala que requieren alta productividad, pulverización de gran volumen, esparcimiento y elevación de carga.",
-    image: "/images/t100.gif",
+    image: "/images/t100.webp",
     badge: "MÁXIMA CAPACIDAD",
 
     spray: "100 L",
@@ -120,7 +120,7 @@ const models: DroneModel[] = [
     tagline: "Alta productividad con excelente maniobrabilidad.",
     description:
       "Una solución profesional para productores y prestadores de servicios que necesitan gran capacidad sin llegar al tamaño del T100. Integra aspersión, esparcimiento y elevación de carga.",
-    image: "/images/t70.gif",
+    image: "/images/t70.webp",
     badge: "VERSÁTIL",
 
     spray: "70 L",
@@ -190,7 +190,7 @@ const models: DroneModel[] = [
     tagline: "Rendimiento profesional en un formato más ligero.",
     description:
       "El AGRAS T55 combina alta capacidad de aplicación con una estructura más ligera y fácil de transportar. Es una alternativa muy atractiva para productores que buscan productividad y versatilidad.",
-    image: "/images/Tt55.gif",
+    image: "/images/Tt55.webp",
     badge: "NUEVO",
 
     spray: "50 L",
@@ -260,7 +260,7 @@ const models: DroneModel[] = [
     tagline: "Pequeño en tamaño. Grande en capacidad.",
     description:
       "Una plataforma compacta desarrollada para operaciones individuales, parcelas pequeñas, terrenos fragmentados y productores que buscan facilidad de transporte sin renunciar a automatización y precisión.",
-    image: "/images/t25.gif",
+    image: "/images/t25.webp",
     badge: "COMPACTO",
 
     spray: "20 L",
@@ -678,7 +678,7 @@ export default function AgriculturePage() {
                       alt={model.name}
                       fill
                       sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                      unoptimized={model.image.endsWith(".gif")}
+                      unoptimized
                       className="
                         absolute
                         inset-0
@@ -913,7 +913,7 @@ export default function AgriculturePage() {
                 alt={selected.name}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                unoptimized={selected.image.endsWith(".gif")}
+                unoptimized
                 className="
                   absolute
                   inset-0

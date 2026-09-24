@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type ServiceId =
@@ -134,7 +135,7 @@ const services: Service[] = [
     subtitle: "Observa activos críticos desde otra perspectiva.",
     description:
       "Utilizamos drones y sensores especializados para inspeccionar tuberías, gasoductos, oleoductos e infraestructura industrial, reduciendo la exposición del personal y facilitando la documentación de activos difíciles de alcanzar.",
-    image: "/images/servicios/inspeccion.gif",
+    image: "/images/servicios/inspeccion.webp",
     label: "Infraestructura",
     applications: [
       "Tuberías",
@@ -160,7 +161,7 @@ const services: Service[] = [
     subtitle: "Drones, software y automatización para tu operación.",
     description:
       "Diseñamos soluciones especializadas cuando una operación necesita algo más que un vuelo. Integramos drones, captura de datos, software y automatización para desarrollar herramientas adaptadas a las necesidades específicas de cada cliente.",
-    image: "/images/servicios/desarrollo.gif",
+    image: "/images/servicios/desarrollo.webp",
     label: "Software + Drones",
     applications: [
       "Automatización",
@@ -921,12 +922,14 @@ export default function ServiciosPage() {
               /images/servicios/software.
             */}
 
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-60"
-              style={{
-                backgroundImage:
-                  "url('/images/servicios/software.gif')",
-              }}
+            <Image
+              src="/images/servicios/software.webp"
+              alt=""
+              fill
+              loading="lazy"
+              sizes="(min-width: 1024px) 53vw, 100vw"
+              className="object-cover object-center opacity-60"
+              unoptimized
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/65" />

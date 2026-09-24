@@ -31,7 +31,7 @@ const slides = [
     description:
       "Aplicación de agroquímicos, levantamientos, inspección, mapeo y soporte especializado.",
 
-    image: "/images/servicio.gif",
+    image: "/images/servicio.webp",
 
     phone: "481 156 6180",
     phoneLink: "+524811566180",
@@ -59,7 +59,7 @@ const slides = [
     description:
       "Equipos y soluciones profesionales para operaciones críticas, automatización, inspección y monitoreo.",
 
-    image: "/images/enterprise-hero.gif",
+    image: "/images/enterprise-hero.webp",
 
     phone: "481 156 6180",
     phoneLink: "+524811566180",
@@ -88,7 +88,7 @@ const slides = [
     description:
       "Tecnología agrícola para pulverización, dispersión, agricultura de precisión y productividad en campo.",
 
-    image: "/images/t55.gif",
+    image: "/images/t55.webp",
 
     phone: "481 107 4483",
     phoneLink: "+524811074483",
@@ -243,7 +243,7 @@ export default function ContactoPage() {
                 priority={index === 0}
                 quality={100}
                 sizes="100vw"
-                unoptimized={slide.image.endsWith(".gif")}
+                unoptimized
                 className="object-cover object-center"
               />
             </div>

@@ -474,7 +474,7 @@ export default function EnterprisePage() {
 
       {/* ======================================================
           QUÉ QUIERES LOGRAR
-          FONDO: enterprise-hero.gif
+          FONDO: enterprise-hero.webp
       ====================================================== */}
 
       <section
@@ -490,7 +490,7 @@ export default function EnterprisePage() {
           bg-no-repeat
         "
         style={{
-          backgroundImage: "url('/images/enterprise-hero.gif')",
+          backgroundImage: "url('/images/enterprise-hero.webp')",
         }}
       >
 
