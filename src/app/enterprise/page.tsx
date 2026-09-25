@@ -190,7 +190,7 @@ export default function EnterprisePage() {
 
           <Image
             src="/images/enterprise-hero.jpg"
-            alt="Soluciones DJI Enterprise MAXIDRONE"
+            alt="Drones DJI Enterprise en México para operaciones profesionales"
             fill
             priority
             quality={100}
@@ -313,10 +313,10 @@ export default function EnterprisePage() {
               }}
             >
 
-              Tecnología para
+              Drones DJI Enterprise
 
               <span className="block">
-                operaciones
+                para operaciones
               </span>
 
               <span className="block">
@@ -337,7 +337,7 @@ export default function EnterprisePage() {
                 sm:text-[17px]
               "
             >
-              Plataformas profesionales para levantamientos,
+              Drones profesionales en México para levantamientos,
               inspección, monitoreo, seguridad y automatización.
             </p>
 
