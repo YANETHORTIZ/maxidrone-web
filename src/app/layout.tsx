@@ -7,8 +7,9 @@ const googleAnalyticsId = "G-2WP2C8VKDS";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://maxidrone.mx"),
+  applicationName: "MAXIDRONE",
   title: {
-    default: "MAXIDRONE | Drones profesionales DJI",
+    default: "MAXIDRONE",
     template: "%s | MAXIDRONE",
   },
   description:
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: "/",
     siteName: "MAXIDRONE",
-    title: "MAXIDRONE | Drones profesionales DJI",
+    title: "MAXIDRONE",
     description:
       "Soluciones profesionales con drones DJI Enterprise y DJI Agriculture en México.",
   },
