@@ -141,9 +141,6 @@ export default function EnterprisePage() {
   const [selectedNeed, setSelectedNeed] =
     useState<Need>("topografia");
 
-  const [dockDrone, setDockDrone] =
-    useState<"4d" | "4td">("4d");
-
   const [heroZoom, setHeroZoom] =
     useState(false);
 
@@ -1016,7 +1013,7 @@ export default function EnterprisePage() {
             mx-auto
             max-w-[1440px]
             px-6
-            py-24
+            py-16
             sm:px-10
             lg:px-14
           "
@@ -1026,13 +1023,13 @@ export default function EnterprisePage() {
             className="
               grid
               items-start
-              gap-12
-              lg:grid-cols-[0.8fr_1.2fr]
+              gap-8
+              lg:grid-cols-[0.85fr_1.15fr]
             "
           >
 
             {/* TEXTO DOCK */}
-            <div className="lg:sticky lg:top-28">
+            <div>
 
               <div className="mb-5 flex items-center gap-4">
 
@@ -1083,37 +1080,27 @@ export default function EnterprisePage() {
               </p>
 
 
-              <div
-                className="
-                  mt-9
-                  border-l
-                  border-[#018C55]
-                  pl-5
-                "
-              >
-
-                <p
-                  className="
-                    text-xl
-                    font-medium
-                    text-white
-                  "
-                >
-                  Operación aérea
-                </p>
-
-                <p
-                  className="
-                    mt-1
-                    text-xl
-                    font-medium
-                    text-white/55
-                  "
-                >
-                  automatizada
-                </p>
-
+              <div className="mt-8 grid max-w-xl grid-cols-2 gap-px overflow-hidden border border-white/10 bg-white/10">
+                {[
+                  ["24/7", "Operación remota"],
+                  ["27 min", "Carga del 15 al 95 %"],
+                  ["IP56", "Protección del Dock"],
+                  ["−30 a 50 °C", "Rango de operación"],
+                ].map(([value, label]) => (
+                  <div key={label} className="bg-[#101010] px-4 py-4">
+                    <p className="text-xl font-semibold text-white">{value}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.13em] text-white/45">
+                      {label}
+                    </p>
+                  </div>
+                ))}
               </div>
+
+              <p className="mt-6 max-w-xl text-sm leading-6 text-white/45">
+                Compatible con despliegues fijos y montados en vehículos,
+                gestión centralizada en DJI FlightHub 2 y misiones programadas
+                para reducir tiempos de respuesta y trabajo operativo.
+              </p>
 
             </div>
 
@@ -1126,7 +1113,8 @@ export default function EnterprisePage() {
                 className="
                   group
                   relative
-                  min-h-[480px]
+                  min-h-[280px]
+                  sm:min-h-[320px]
                   overflow-hidden
                   bg-black
                 "
@@ -1196,89 +1184,37 @@ export default function EnterprisePage() {
 
               </div>
 
+            </div>
 
-              {/* SELECTOR 4D / 4TD */}
-              <div className="mt-6">
-
-                <div
-                  className="
-                    grid
-                    grid-cols-2
-                    border
-                    border-[#303030]
-                  "
-                >
-
-                  <button
-                    type="button"
-                    aria-pressed={dockDrone === "4d"}
-                    onClick={() =>
-                      setDockDrone("4d")
-                    }
-                    className={`
-                      min-h-16
-                      px-5
-                      text-sm
-                      font-semibold
-                      uppercase
-                      tracking-[0.14em]
-                      transition
-
-                      ${
-                        dockDrone === "4d"
-                          ? "bg-white text-black"
-                          : "bg-black text-[#6B6B6B] hover:text-white"
-                      }
-                    `}
-                  >
-                    Matrice 4D
-                  </button>
+          </div>
 
 
-                  <button
-                    type="button"
-                    aria-pressed={dockDrone === "4td"}
-                    onClick={() =>
-                      setDockDrone("4td")
-                    }
-                    className={`
-                      min-h-16
-                      border-l
-                      border-[#303030]
-                      px-5
-                      text-sm
-                      font-semibold
-                      uppercase
-                      tracking-[0.14em]
-                      transition
-
-                      ${
-                        dockDrone === "4td"
-                          ? "bg-white text-black"
-                          : "bg-black text-[#6B6B6B] hover:text-white"
-                      }
-                    `}
-                  >
-                    Matrice 4TD
-                  </button>
-
+          <div className="mt-8 flex flex-col gap-2 border-y border-white/10 py-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#018C55]">
+                    Serie Matrice 4D
+                  </p>
+                  <p className="mt-1 text-xl font-semibold text-white">
+                    Dos aeronaves para misiones especializadas.
+                  </p>
                 </div>
+                <p className="text-sm text-white/45">Integración nativa con DJI Dock 3</p>
+              </div>
+
+          <div className="mt-5 grid gap-5 xl:grid-cols-2">
 
 
                 {/* ================================
                     MATRICE 4D
                 ================================= */}
 
-                {dockDrone === "4d" && (
-
                   <div
                     className="
                       grid
-                      gap-8
+                      gap-5
                       bg-black
-                      p-7
-                      sm:p-9
-                      md:grid-cols-[1fr_1.1fr]
+                      p-5
+                      sm:grid-cols-[0.8fr_1.2fr]
                     "
                   >
 
@@ -1286,7 +1222,7 @@ export default function EnterprisePage() {
                       className="
                         group
                         relative
-                        min-h-[320px]
+                        min-h-[210px]
                         overflow-hidden
                         bg-[#151515]
                       "
@@ -1300,7 +1236,7 @@ export default function EnterprisePage() {
                         sizes="(max-width:768px) 100vw, 40vw"
                         className="
                           object-contain
-                          p-5
+                          p-3
                           transition-transform
                           duration-700
                           group-hover:scale-[1.04]
@@ -1334,7 +1270,7 @@ export default function EnterprisePage() {
                       <h3
                         className="
                           mt-3
-                          text-3xl
+                          text-2xl
                           font-semibold
                           text-white
                         "
@@ -1345,32 +1281,32 @@ export default function EnterprisePage() {
 
                       <p
                         className="
-                          mt-5
-                          leading-7
+                          mt-4
+                          text-sm
+                          leading-6
                           text-[#6B6B6B]
                         "
                       >
-                        La opción del ecosistema Dock
-                        orientada a mapeo, levantamientos
-                        y captura recurrente de información.
+                        Diseñada para cartografía, levantamientos e inspección
+                        de detalle, con cámara 4/3 de 20 MP y obturador mecánico.
                       </p>
 
 
                       <div
                         className="
-                          mt-7
+                          mt-5
                           grid
                           grid-cols-2
-                          gap-4
-                          text-sm
+                          gap-3
+                          text-xs
                         "
                       >
 
                         {[
-                          "Mapeo",
-                          "Topografía",
-                          "Fotogrametría",
-                          "Misiones programadas",
+                          "Hasta 54 min de vuelo",
+                          "Protección IP55",
+                          "Cámara 4/3 de 20 MP",
+                          "Obturador mecánico",
                         ].map((item) => (
 
                           <div
@@ -1394,23 +1330,17 @@ export default function EnterprisePage() {
 
                   </div>
 
-                )}
-
-
                 {/* ================================
                     MATRICE 4TD
                 ================================= */}
 
-                {dockDrone === "4td" && (
-
                   <div
                     className="
                       grid
-                      gap-8
+                      gap-5
                       bg-black
-                      p-7
-                      sm:p-9
-                      md:grid-cols-[1fr_1.1fr]
+                      p-5
+                      sm:grid-cols-[0.8fr_1.2fr]
                     "
                   >
 
@@ -1418,7 +1348,7 @@ export default function EnterprisePage() {
                       className="
                         group
                         relative
-                        min-h-[320px]
+                        min-h-[210px]
                         overflow-hidden
                         bg-[#151515]
                       "
@@ -1432,7 +1362,7 @@ export default function EnterprisePage() {
                         sizes="(max-width:768px) 100vw, 40vw"
                         className="
                           object-contain
-                          p-5
+                          p-3
                           transition-transform
                           duration-700
                           group-hover:scale-[1.04]
@@ -1466,7 +1396,7 @@ export default function EnterprisePage() {
                       <h3
                         className="
                           mt-3
-                          text-3xl
+                          text-2xl
                           font-semibold
                           text-white
                         "
@@ -1477,32 +1407,32 @@ export default function EnterprisePage() {
 
                       <p
                         className="
-                          mt-5
-                          leading-7
+                          mt-4
+                          text-sm
+                          leading-6
                           text-[#6B6B6B]
                         "
                       >
-                        Configuración orientada a seguridad,
-                        monitoreo, inspección y operaciones
-                        que requieren información térmica.
+                        Integra visión térmica y luz auxiliar NIR para seguridad,
+                        respuesta a emergencias e inspecciones de infraestructura.
                       </p>
 
 
                       <div
                         className="
-                          mt-7
+                          mt-5
                           grid
                           grid-cols-2
-                          gap-4
-                          text-sm
+                          gap-3
+                          text-xs
                         "
                       >
 
                         {[
-                          "Seguridad",
-                          "Monitoreo",
-                          "Inspección",
-                          "Información térmica",
+                          "Hasta 54 min de vuelo",
+                          "Protección IP55",
+                          "Térmica 640 × 512",
+                          "Telémetro hasta 1,800 m",
                         ].map((item) => (
 
                           <div
@@ -1526,13 +1456,12 @@ export default function EnterprisePage() {
 
                   </div>
 
-                )}
-
-              </div>
-
-            </div>
-
           </div>
+
+          <p className="mt-4 text-xs leading-5 text-white/35">
+            Especificaciones publicadas por DJI; el rendimiento real puede
+            variar según el entorno, la configuración y las condiciones de vuelo.
+          </p>
 
         </div>
 
