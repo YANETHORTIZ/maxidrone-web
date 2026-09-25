@@ -1022,14 +1022,14 @@ export default function EnterprisePage() {
           <div
             className="
               grid
-              items-start
+              items-stretch
               gap-8
               lg:grid-cols-[0.85fr_1.15fr]
             "
           >
 
             {/* TEXTO DOCK */}
-            <div>
+            <div className="h-full">
 
               <div className="mb-5 flex items-center gap-4">
 
@@ -1106,13 +1106,14 @@ export default function EnterprisePage() {
 
 
             {/* ÁREA DOCK */}
-            <div>
+            <div className="h-full">
 
               {/* IMAGEN */}
               <div
                 className="
                   group
                   relative
+                  h-full
                   min-h-[280px]
                   sm:min-h-[320px]
                   overflow-hidden
