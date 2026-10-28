@@ -51,7 +51,7 @@ const faq = [
   },
   {
     q: "¿Dónde será?",
-    a: "La próxima edición está prevista para octubre de 2026 en Ciudad Valles, San Luis Potosí. Las fechas y sede específicas se compartirán con las personas pre-registradas.",
+    a: "La próxima edición será el 25 y 26 de noviembre de 2026 en Ignacio Zaragoza 730, Zona Centro, Ciudad Valles, San Luis Potosí.",
   },
   {
     q: "¿Pueden capacitar a estudiantes de nuestra universidad?",
@@ -68,10 +68,13 @@ export default function AcademyPage() {
     useState<Audience>("alumno");
 
   const studentWhatsapp =
-    "https://wa.me/524811024104?text=Hola%20MAXIDRONE,%20quiero%20información%20para%20registrarme%20a%20DJI%20Academy%20Ciudad%20Valles%20Octubre%202026.";
+    "https://wa.me/524811024104?text=Hola%20MAXIDRONE,%20quiero%20información%20para%20registrarme%20a%20DJI%20Academy%20Ciudad%20Valles%2025%20y%2026%20de%20noviembre%20de%202026.";
 
   const universityWhatsapp =
     "https://wa.me/524811024104?text=Hola%20MAXIDRONE,%20represento%20a%20una%20universidad%20y%20quiero%20información%20sobre%20un%20convenio%20DJI%20Academy.";
+
+  const secondaryWhatsapp =
+    "https://wa.me/524811566180?text=Hola%20MAXIDRONE,%20quiero%20información%20sobre%20DJI%20Academy%20AGRAS%20del%2025%20y%2026%20de%20noviembre%20de%202026.";
 
   const scrollTo = (id: string) => {
     document
@@ -93,119 +96,53 @@ export default function AcademyPage() {
       {/* HERO */}
       {/* ====================================================== */}
 
-      <section className="relative border-b border-white/10 bg-black">
+      <section className="relative border-b border-white/10 bg-[#050806]">
 
-        <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[0.88fr_1.12fr]">
+        <h1 className="sr-only">
+          DJI Academy AGRAS · Formación teórica y práctica
+        </h1>
 
-          {/* TEXTO */}
-
-          <div className="relative flex min-h-[580px] flex-col justify-center px-6 py-14 sm:px-10 lg:px-14">
-
-            <div className="mb-6 flex flex-wrap items-center gap-2">
-
-              <span className="rounded-full bg-[#018C55] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em]">
-                Inscripciones
-              </span>
-
-              <span className="rounded-full border border-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-white/45">
-                Ciudad Valles · S.L.P.
-              </span>
-
-            </div>
-
-            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/30">
-              Formación DJI Agriculture
-            </p>
-
-            <h1 className="subpage-title mt-5 text-[56px] font-semibold leading-[0.9] tracking-[-0.06em] sm:text-[72px] lg:text-[82px]">
-
-              DJI
-
-              <span className="block text-[#018C55]">
-                Academy
-              </span>
-
-            </h1>
-
-            <p className="mt-6 text-xl font-medium text-white/85">
-              Aprende. Practica. Pilotea.
-            </p>
-
-            <p className="mt-3 max-w-[560px] text-sm leading-6 text-white/40 sm:text-base">
-              Capacitación teórica y práctica para
-              estudiantes, profesionales y futuros operadores
-              de drones agrícolas.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-
-              <button
-                onClick={() => scrollTo("registro")}
-                className="group flex items-center gap-4 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-white/85"
-              >
-                Quiero participar
-
-                <span className="transition group-hover:translate-x-1">
-                  →
-                </span>
-              </button>
-
-              <button
-                onClick={() =>
-                  scrollTo("universidades")
-                }
-                className="rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-white/60 transition hover:border-white/30 hover:text-white"
-              >
-                Convenios universitarios
-              </button>
-
-            </div>
+        <div className="mx-auto max-w-[960px] px-3 py-5 sm:px-6 sm:py-8">
+          <div className="overflow-hidden rounded-[20px] border border-white/10 bg-white shadow-2xl shadow-black/40 sm:rounded-[28px]">
+            <Image
+              src="/images/academy/dji-academy-agras-noviembre-2026.png"
+              alt="DJI Academy AGRAS de MAXIDRONE: formación teórica y práctica el 25 y 26 de noviembre de 2026 por 3,999 pesos más IVA en Ciudad Valles, San Luis Potosí"
+              width={1200}
+              height={1500}
+              sizes="(max-width: 1024px) 100vw, 960px"
+              preload
+              className="h-auto w-full"
+            />
           </div>
 
-          {/* ================================================== */}
-          {/* ESPACIO FOTO 01 */}
-          {/* ================================================== */}
-
-          <div className="relative min-h-[450px] overflow-hidden bg-[#090909] lg:min-h-[580px]">
-
-            {/*
-              FOTO 1
-
-              Guarda la imagen en:
-
-              public/images/academy/academy-1.jpg
-            */}
-
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  "url('/images/academy/academy-1.jpg')",
-              }}
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/5 to-transparent" />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
-
-            <div className="absolute left-6 top-6 rounded-full border border-white/10 bg-black/50 px-4 py-2 backdrop-blur">
-              <p className="text-[9px] uppercase tracking-[0.22em] text-white/55">
-                Octubre · 2026
+          <div className="mt-4 rounded-[20px] border border-white/10 bg-black/70 p-4 backdrop-blur sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-5">
+            <div>
+              <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-[#89ef1a]">
+                Informes e inscripciones
+              </p>
+              <p className="mt-1 text-sm text-white/55">
+                Comunícate con MAXIDRONE por WhatsApp.
               </p>
             </div>
 
-            <div className="absolute bottom-7 left-7">
-
-              <p className="text-[9px] uppercase tracking-[0.22em] text-white/35">
-                DJI Academy
-              </p>
-
-              <p className="mt-2 text-xl font-semibold">
-                Formación práctica en campo.
-              </p>
-
+            <div className="mt-4 grid gap-2 sm:mt-0 sm:grid-cols-2">
+              <a
+                href={studentWhatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-white px-5 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/85"
+              >
+                481 102 4104
+              </a>
+              <a
+                href={secondaryWhatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-[#89ef1a] px-5 py-3 text-center text-sm font-semibold text-[#063b29] transition hover:bg-[#9cff32]"
+              >
+                481 156 6180
+              </a>
             </div>
-
           </div>
         </div>
 
@@ -217,7 +154,7 @@ export default function AcademyPage() {
 
             <MiniInfo
               label="Fecha"
-              value="Octubre 2026"
+              value="25 y 26 de noviembre"
             />
 
             <MiniInfo
@@ -617,7 +554,7 @@ export default function AcademyPage() {
       </section>
 
       {/* ====================================================== */}
-      {/* OCTUBRE */}
+      {/* NOVIEMBRE */}
       {/* ====================================================== */}
 
       <section className="border-b border-white/10 bg-[#050505]">
@@ -627,7 +564,7 @@ export default function AcademyPage() {
           <div>
 
             <p className="text-[62px] font-semibold leading-none tracking-[-0.07em] text-[#018C55]">
-              OCT
+              NOV
             </p>
 
             <p className="mt-1 text-base font-semibold text-white/25">
@@ -789,7 +726,7 @@ export default function AcademyPage() {
           </div>
 
           <p className="mt-5 text-center text-xs text-white/25">
-            DJI Agriculture · MAXIDRONE · 481 107 4483
+            DJI Agriculture · MAXIDRONE · 481 102 4104 · 481 156 6180
           </p>
 
         </div>
@@ -870,7 +807,7 @@ export default function AcademyPage() {
           />
 
           <p className="mt-5 text-[9px] font-semibold uppercase tracking-[0.27em] text-white/30">
-            DJI Academy · Octubre 2026
+            DJI Academy · 25 y 26 de noviembre de 2026
           </p>
 
           <h2 className="mx-auto mt-4 max-w-[800px] text-3xl font-semibold tracking-[-0.045em] sm:text-4xl lg:text-5xl">
